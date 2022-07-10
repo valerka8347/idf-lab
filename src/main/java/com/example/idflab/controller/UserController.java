@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/user")
@@ -28,4 +29,9 @@ public class UserController {
         return ResponseEntity.ok(all);
     }
 
+    @GetMapping("/findById")
+    public ResponseEntity<User> findById (Long id){
+        Optional<User> byId = userRepository.findById(id);
+        return byId.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.badRequest().build());
+    }
 }

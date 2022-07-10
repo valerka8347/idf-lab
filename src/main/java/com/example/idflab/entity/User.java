@@ -18,7 +18,7 @@ public class User {
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private long ig;
     private String username;
-    private String password;
-    private String name;
+    private String symbol;
+
     
 }
